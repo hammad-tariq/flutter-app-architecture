@@ -17,7 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Libraries/Frameworks and Architecture
 
-Clean Code
-Bloc for Widget state managment
-Manage theme from single source
+- Clean Code
+- Bloc for Widget state managment
+- Manage theme from single source
 
