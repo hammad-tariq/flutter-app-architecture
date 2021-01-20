@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_app/src/features/login/domain/entities/login_response.dart';
 
 class LoginResponseModel extends LoginResponseDto {

@@ -24,6 +24,11 @@ dependencies:
   http: ^0.12.2
   # Local cache
   shared_preferences: ^0.5.12+4
+  # localization
+  flutter_localizations:
+    sdk: flutter
+  # To add localized text.
+  intl: ^0.16.0
 
 
 dev_dependencies:
@@ -33,8 +38,9 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
+
   uses-material-design: true
+

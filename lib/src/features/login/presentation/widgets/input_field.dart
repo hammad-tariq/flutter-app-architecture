@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 Widget inputWidget(Icon icon, String hint, TextEditingController controller,
-    bool obsecure, BuildContext context) {
+    bool obscure, BuildContext context) {
   return Container(
     padding: EdgeInsets.only(left: 20, right: 20),
     child: TextField(
       controller: controller,
-      obscureText: obsecure,
+      obscureText: obscure,
       style: TextStyle(
         fontSize: 20,
       ),

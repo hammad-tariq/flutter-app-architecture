@@ -6,7 +6,9 @@ class SearchField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextField(
-        onChanged: (value) {},
+        onChanged: (value) {
+          // TODO: implement callback.
+        },
         decoration: InputDecoration(
             labelText: "Search",
             hintText: "Search",

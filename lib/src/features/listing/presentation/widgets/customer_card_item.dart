@@ -13,7 +13,7 @@ class CustomerCardItem extends StatelessWidget {
           child: Icon(Icons.autorenew, color: Colors.white),
         ),
         title: Text(
-          "Introduction to Driving",
+          "Customer Title",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
@@ -21,7 +21,7 @@ class CustomerCardItem extends StatelessWidget {
         subtitle: Row(
           children: <Widget>[
             Icon(Icons.linear_scale, color: Colors.yellowAccent),
-            Text(" Intermediate", style: TextStyle(color: Colors.white))
+            Text("Customer Details", style: TextStyle(color: Colors.white))
           ],
         ),
         trailing:

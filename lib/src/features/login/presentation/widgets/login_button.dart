@@ -18,7 +18,6 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return RaisedButton(
       highlightElevation: 0.0,
       splashColor: splashColor,
@@ -32,7 +31,9 @@ class LoginButton extends StatelessWidget {
         style: TextStyle(
             fontWeight: FontWeight.bold, color: textColor, fontSize: 20),
       ),
-      onPressed: () {},
+      onPressed: () {
+        // TODO: implement callback.
+      },
     );
   }
 }

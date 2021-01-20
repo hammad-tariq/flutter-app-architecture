@@ -2,15 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/src/features/login/presentation/widgets/input_field.dart';
 import 'package:flutter_app/src/features/login/presentation/widgets/login_button.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   TextEditingController _emailController = new TextEditingController();
+
   TextEditingController _passwordController = new TextEditingController();
+
   TextEditingController _nameController = new TextEditingController();
+
   String _email;
+
   String _password;
+
   String _displayName;
-  bool _obsecure = false;
+
+  bool _obscure = false;
 
   @override
   Widget build(BuildContext context) {
