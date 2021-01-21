@@ -22,6 +22,7 @@ dependencies:
   # Remote API
   data_connection_checker: ^0.3.4
   http: ^0.12.2
+  connectivity: ^2.0.2
   # Local cache
   shared_preferences: ^0.5.12+4
   # localization
