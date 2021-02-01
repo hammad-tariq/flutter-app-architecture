@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_app/src/core/theme.dart';
+import 'package:flutter_app/src/core/util/theme.dart';
 import 'package:flutter_app/src/features/listing/presentation/pages/listing_page.dart';
 
 class App extends StatefulWidget {

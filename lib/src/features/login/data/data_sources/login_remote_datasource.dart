@@ -1,6 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/src/features/login/data/models/login_response_model.dart';
-import 'package:http/http.dart';
 
 abstract class LoginRemoteDataSource {
   Future<LoginResponseModel> makeLoginRequest(
@@ -8,7 +8,7 @@ abstract class LoginRemoteDataSource {
 }
 
 class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
-  final Client httpClient;
+  final Dio httpClient;
 
   LoginRemoteDataSourceImpl({@required this.httpClient});
 
