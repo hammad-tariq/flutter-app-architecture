@@ -1,4 +1,4 @@
-# flutter_app
+# Flutter Demo App
 
 A new Flutter application.
 
@@ -18,6 +18,11 @@ samples, guidance on mobile development, and a full API reference.
 ## Libraries/Frameworks and Architecture
 
 - Clean Code
-- Bloc for Widget state managment
+- Bloc for Widget state management
+- Dio for Networking
+- Flutter Localization
+- Equatable to facilitate == and hashCode overrides
+- DartZ for functional programming
+- Get_it for service locator
 - Manage theme from single source
 

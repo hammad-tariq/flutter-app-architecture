@@ -9,3 +9,5 @@ const String LOG_FLAG = 'flutter_mobileApp_log';
 const String HOME_ROUTE = '/';
 const String LOGIN_ROUTE = '/login';
 const String LISTING_ROUTE = '/listing';
+
+const String NO_INTERNET_MSG = "No internet connection available.";

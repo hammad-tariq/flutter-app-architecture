@@ -1,5 +1,7 @@
 name: flutter_app
 description: Flutter demo application.
+authors:
+  - Hammad Tariq (hammadtariq.me@gmail.com)
 version: 1.0.0+1
 
 environment:
