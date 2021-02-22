@@ -16,7 +16,8 @@ Future<void> initDI() async {
   print("init DI is called.");
 
   // Api Service
-  serviceLocator.registerLazySingleton<ApiService>(() => ApiService());
+  serviceLocator.registerLazySingleton<ApiService>(
+      () => ApiService(networkClient: serviceLocator()));
 
   // Network Client
   serviceLocator.registerLazySingleton<NetworkClient>(() => NetworkClient());
@@ -27,16 +28,16 @@ Future<void> initDI() async {
       .registerLazySingleton<SharedPreferences>(() => sharedPreferences);
 
   serviceLocator.registerLazySingleton<DataConnectionChecker>(
-          () => DataConnectionChecker());
+      () => DataConnectionChecker());
   // Core
   serviceLocator.registerLazySingleton<NetworkInfoImpl>(
-          () => NetworkInfoImpl(serviceLocator()));
+      () => NetworkInfoImpl(serviceLocator()));
 
   // Data Sources
   serviceLocator.registerLazySingleton<LoginRemoteDataSourceImpl>(
-          () => LoginRemoteDataSourceImpl(apiService: serviceLocator()));
+      () => LoginRemoteDataSourceImpl(apiService: serviceLocator()));
   serviceLocator.registerLazySingleton<LoginLocalDataSourceImpl>(
-          () => LoginLocalDataSourceImpl(sharedPreferences: serviceLocator()));
+      () => LoginLocalDataSourceImpl(sharedPreferences: serviceLocator()));
 
   // Repository
   serviceLocator.registerLazySingleton<LoginRepositoryImpl>(() =>
@@ -47,8 +48,8 @@ Future<void> initDI() async {
 
   // Use Cases
   serviceLocator.registerLazySingleton<LoginRequestUserCase>(
-          () => LoginRequestUserCase(serviceLocator()));
+      () => LoginRequestUserCase(serviceLocator()));
   // Bloc
   serviceLocator.registerFactory<LoginBloc>(
-          () => LoginBloc(loginRequestUserCase: serviceLocator()));
+      () => LoginBloc(loginRequestUserCase: serviceLocator()));
 }

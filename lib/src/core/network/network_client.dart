@@ -13,7 +13,13 @@ class NetworkClient {
         maxRedirects: 2);
     _dio = Dio(baseOptions);
     // adding logging interceptor.
-    _dio.interceptors.add(LogInterceptor());
+    _dio.interceptors.add(LogInterceptor(
+        requestBody: true,
+        error: true,
+        request: true,
+        requestHeader: true,
+        responseBody: true,
+        responseHeader: true));
   }
 
   // for HTTP.GET Request.
