@@ -15,6 +15,12 @@ class _AppState extends State<App> {
   var supportedLocales = [const Locale('en', ''), const Locale('ar', '')];
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
         localizationsDelegates: [
