@@ -17,8 +17,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginEvent event,
   ) async* {
     if (event is LoginRequestEvent) {
-      await loginRequestUserCase.makeLoginRequest(
+      var result = await loginRequestUserCase.makeLoginRequest(
           event.userName, event.password);
+      yield* result.fold((l) async* {
+        yield LoginFailed(message: '');
+      }, (r) async* {
+        yield LoginSuccessful();
+      });
     }
   }
 }
