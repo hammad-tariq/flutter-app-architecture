@@ -6,7 +6,7 @@ import 'bloc.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   @override
-  LoginState get initialState => LoginInitial();
+  LoginState get initialState => Empty();
 
   final LoginRequestUserCase loginRequestUserCase;
 

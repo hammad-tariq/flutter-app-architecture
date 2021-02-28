@@ -37,14 +37,23 @@ const TextStyle subHeadingStyle = TextStyle(
   color: whiteColor,
 );
 
-// Application Theme
+// Light Theme
 ThemeData lightTheme = ThemeData.light().copyWith(
     primaryColor: primaryColor,
-    accentColor: secondaryColor,
     canvasColor: Colors.transparent,
     splashColor: splashColor,
+    brightness: Brightness.dark,
+    backgroundColor: Colors.blue[700],
+    accentColor: Colors.yellow[700],
     textTheme: TextTheme(
         title: titleStyle, subtitle: subTitleStyle, subhead: subHeadingStyle),
     appBarTheme: AppBarTheme(
         color: Color(0xff1f655d),
         actionsIconTheme: IconThemeData(color: Colors.white)));
+
+// Dark Theme.
+ThemeData darkTheme = ThemeData.dark().copyWith(
+  brightness: Brightness.dark,
+  backgroundColor: Colors.blue[700],
+  accentColor: Colors.yellow[700],
+);

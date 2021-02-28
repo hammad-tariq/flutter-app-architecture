@@ -11,3 +11,5 @@ const String LOGIN_ROUTE = '/login';
 const String LISTING_ROUTE = '/listing';
 
 const String NO_INTERNET_MSG = "No internet connection available.";
+
+const String CURRENT_LANG_FLAG = 'user_current_language';

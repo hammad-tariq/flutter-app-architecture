@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/src/core/util/theme.dart';
+import 'package:flutter_app/src/core/util/theme_controller.dart';
 import 'package:flutter_app/src/features/login/presentation/bloc/bloc.dart';
 import 'package:flutter_app/src/features/login/presentation/widgets/input_field.dart';
-import 'package:flutter_app/src/features/login/presentation/widgets/login_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -25,39 +27,30 @@ class _LoginPageState extends State<LoginPage> {
   String _displayName;
 
   bool _obscure = false;
+  var themeController = GetIt.I<ThemeController>();
+  ThemeMode _themeMode;
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<LoginBloc>(
-        create: (context) => LoginBloc(loginRequestUserCase: null),
-        child: Scaffold(
-            resizeToAvoidBottomPadding: false,
-            key: _scaffoldKey,
-            backgroundColor: Theme.of(context).primaryColor,
-            body: DecoratedBox(
-              decoration: BoxDecoration(color: Theme.of(context).canvasColor),
-              child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40.0),
-                    topRight: Radius.circular(40.0)),
-                child: Container(
-                  child: BlocBuilder<LoginBloc, LoginState>(
-                    builder: (context, state) {
-                      if (state is LoginInitial) {
-                        return buildLoginWidget();
-                      } else {
-                        return Container();
-                      }
-                    },
-                  ),
-                  height: MediaQuery.of(context).size.height / 1.1,
-                  width: MediaQuery.of(context).size.width,
-                  color: Colors.white,
-                ),
-              ),
-            )));
+    _themeMode = themeController.themeMode;
+
+    return Scaffold(
+        resizeToAvoidBottomPadding: false,
+        key: _scaffoldKey,
+        backgroundColor: Theme.of(context).primaryColor,
+        body: BlocProvider<LoginBloc>(
+          create: (context) => LoginBloc(loginRequestUserCase: null),
+          child: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
+            if (state is Empty) {
+              return buildLoginWidget();
+            } else {
+              return Container();
+            }
+          }),
+        ));
   }
 
+  // Login Page UI.
   Widget buildLoginWidget() {
     return ListView(
       children: <Widget>[
@@ -140,12 +133,28 @@ class _LoginPageState extends State<LoginPage> {
                     right: 20,
                     bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: Container(
-                  child: LoginButton(
-                    text: "LOGIN",
-                    splashColor: Theme.of(context).primaryColor,
-                    fillColor: Theme.of(context).primaryColor,
-                    highlightColor: Theme.of(context).primaryColor,
-                    textColor: Theme.of(context).primaryColor,
+                  child: RaisedButton(
+                    highlightElevation: 0.0,
+                    elevation: 0.0,
+                    color: primaryColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(30.0)),
+                    child: Text(
+                      'Login',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: secondaryColor,
+                          fontSize: 20),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        if (_themeMode == ThemeMode.light) {
+                          themeController.setThemeMode(ThemeMode.dark);
+                        } else {
+                          themeController.setThemeMode(ThemeMode.light);
+                        }
+                      });
+                    },
                   ),
                   height: 50,
                   width: MediaQuery.of(context).size.width,
