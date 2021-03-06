@@ -1,4 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 abstract class Failure extends Equatable {
   @override
@@ -8,7 +10,17 @@ abstract class Failure extends Equatable {
 }
 
 // Represent failures from Server/Remote data source.
-class RemoteFailure implements Exception {}
+class RemoteFailure extends Failure {
+  final String message;
+  final DioErrorType errorType;
+
+  RemoteFailure({@required this.message, @required this.errorType});
+}
 
 // Represent failures from Cache.
-class LocalFailure implements Exception {}
+class LocalFailure extends Failure {
+  final String message;
+  final int error;
+
+  LocalFailure({@required this.message, @required this.error});
+}

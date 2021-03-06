@@ -1,6 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/src/core/error/exceptions.dart';
+import 'package:flutter_app/src/core/network/api_service.dart';
 import 'package:flutter_app/src/features/login/data/models/login_response_model.dart';
-import 'package:http/http.dart';
 
 abstract class LoginRemoteDataSource {
   Future<LoginResponseModel> makeLoginRequest(
@@ -8,13 +10,21 @@ abstract class LoginRemoteDataSource {
 }
 
 class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
-  final Client httpClient;
+  final ApiService apiService;
 
-  LoginRemoteDataSourceImpl({@required this.httpClient});
+  LoginRemoteDataSourceImpl({@required this.apiService});
 
   @override
   Future<LoginResponseModel> makeLoginRequest(
       String userName, String userPassword) async {
-    return null;
+    Map<String, String> params;
+    LoginResponseModel loginResponseModel;
+    Response response = await apiService.loginApiRequest(params);
+    try {
+      loginResponseModel = LoginResponseModel.fromJson(response.data);
+      return loginResponseModel;
+    } on RemoteException catch (exception) {
+      throw exception;
+    }
   }
 }
