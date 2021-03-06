@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/src/features/login/presentation/pages/login_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_app/src/core/theme.dart';
-import 'package:flutter_app/src/features/listing/presentation/pages/listing_page.dart';
 
 class App extends StatefulWidget {
   @override
@@ -24,7 +24,7 @@ class _AppState extends State<App> {
         ],
         supportedLocales: supportedLocales,
         title: 'Demo App',
-        home: ListingPage(),
+        home: LoginPage(),
         debugShowCheckedModeBanner: false,
         theme: lightTheme);
   }

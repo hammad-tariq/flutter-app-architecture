@@ -11,6 +11,10 @@ class _ListingPageState extends State<ListingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Customer listing'),
+      ),
       body: Container(
         child: Column(
           children: <Widget>[

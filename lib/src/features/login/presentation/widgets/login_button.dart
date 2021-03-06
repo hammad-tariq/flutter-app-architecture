@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/src/features/listing/presentation/pages/listing_page.dart';
 
 class LoginButton extends StatelessWidget {
   final String text;
@@ -32,7 +33,10 @@ class LoginButton extends StatelessWidget {
             fontWeight: FontWeight.bold, color: textColor, fontSize: 20),
       ),
       onPressed: () {
-        // TODO: implement callback.
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ListingPage()),
+        );
       },
     );
   }

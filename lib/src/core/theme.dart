@@ -21,7 +21,6 @@ const defaultRadius = 12.0;
 const TextStyle subTitleStyle = TextStyle(
   fontWeight: FontWeight.w200,
   fontSize: 18,
-  fontFamily: 'SharpSans',
   color: surfaceOnColor,
 );
 
@@ -44,7 +43,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     canvasColor: Colors.transparent,
     splashColor: splashColor,
     textTheme: TextTheme(
-        title: titleStyle, subtitle: subTitleStyle, subhead: subHeadingStyle),
+        headline6: titleStyle, subtitle2: subTitleStyle, subtitle1: subHeadingStyle),
     appBarTheme: AppBarTheme(
         color: Color(0xff1f655d),
         actionsIconTheme: IconThemeData(color: Colors.white)));
