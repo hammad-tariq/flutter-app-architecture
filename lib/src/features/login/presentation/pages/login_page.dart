@@ -35,7 +35,6 @@ class _LoginPageState extends State<LoginPage> {
     _themeMode = themeController.themeMode;
 
     return Scaffold(
-        resizeToAvoidBottomPadding: false,
         key: _scaffoldKey,
         backgroundColor: Theme.of(context).primaryColor,
         body: BlocProvider<LoginBloc>(

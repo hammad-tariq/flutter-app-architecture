@@ -3,9 +3,9 @@ import 'package:bloc/bloc.dart';
 import 'bloc.dart';
 
 class ListingBloc extends Bloc<ListingEvent, ListingState> {
-  @override
-  // TODO: implement initialState
-  ListingState get initialState => null;
+  ListingState get initialState => ListingInitial();
+
+  ListingBloc(ListingState initialState) : super(initialState);
 
   @override
   Stream<ListingState> mapEventToState(

@@ -5,12 +5,9 @@ import 'package:flutter_app/src/features/login/domain/use_cases/login_usecase.da
 import 'bloc.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  @override
-  LoginState get initialState => Empty();
-
   final LoginRequestUserCase loginRequestUserCase;
 
-  LoginBloc({@required this.loginRequestUserCase});
+  LoginBloc({@required this.loginRequestUserCase}) : super(Empty());
 
   @override
   Stream<LoginState> mapEventToState(
