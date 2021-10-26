@@ -35,7 +35,7 @@ class LoginRepositoryImpl implements LoginRepository {
       }
     } else {
       return Left(RemoteFailure(
-          message: NO_INTERNET_MSG, errorType: DioErrorType.DEFAULT));
+          message: NO_INTERNET_MSG, errorType: DioErrorType.other));
     }
   }
 }

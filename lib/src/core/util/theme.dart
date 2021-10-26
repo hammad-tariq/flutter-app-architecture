@@ -44,9 +44,8 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     splashColor: splashColor,
     brightness: Brightness.dark,
     backgroundColor: Colors.blue[700],
-    accentColor: Colors.yellow[700],
     textTheme: TextTheme(
-        title: titleStyle, subtitle: subTitleStyle, subhead: subHeadingStyle),
+        subtitle1: titleStyle, subtitle2: subTitleStyle, bodyText1: subHeadingStyle),
     appBarTheme: AppBarTheme(
         color: Color(0xff1f655d),
         actionsIconTheme: IconThemeData(color: Colors.white)));
@@ -54,6 +53,4 @@ ThemeData lightTheme = ThemeData.light().copyWith(
 // Dark Theme.
 ThemeData darkTheme = ThemeData.dark().copyWith(
   brightness: Brightness.dark,
-  backgroundColor: Colors.blue[700],
-  accentColor: Colors.yellow[700],
-);
+  backgroundColor: Colors.blue[700]);
