@@ -1,26 +1,16 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_app/src/core/error/exceptions.dart';
 import 'package:flutter_app/src/core/util/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NetworkClient {
   Dio _dio;
 
-  NetworkClient() {
-    BaseOptions baseOptions = BaseOptions(
-        receiveTimeout: 3500,
-        connectTimeout: 3500,
-        baseUrl: API_BASE_URL,
-        maxRedirects: 2);
-    _dio = Dio(baseOptions);
-    // adding logging interceptor.
-    _dio.interceptors.add(LogInterceptor(
-        requestBody: true,
-        error: true,
-        request: true,
-        requestHeader: true,
-        responseBody: true,
-        responseHeader: true));
-  }
+  final SharedPreferences sharedPreferences;
+  final Dio dio;
+
+  NetworkClient({@required this.sharedPreferences, @required this.dio});
 
   // for HTTP.GET Request.
   Future<Response> get(String url, Map<String, String> params) async {

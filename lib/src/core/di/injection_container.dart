@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:dio/adapter.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_app/src/core/network/api_service.dart';
 import 'package:flutter_app/src/core/network/network_client.dart';
 import 'package:flutter_app/src/core/network/network_info.dart';
@@ -17,12 +21,50 @@ final serviceLocator = GetIt.I;
 Future<void> initDI() async {
   print("init DI is called.");
 
+  Dio _dio = Dio();
+
+  BaseOptions baseOptions = BaseOptions(
+      receiveTimeout: 5000,
+      connectTimeout: 5000,
+      headers: {"Content-Type": "application/json"},
+      baseUrl: "http://google.com",
+      maxRedirects: 2);
+  _dio.options = baseOptions;
+
+  (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+      (client) {
+    client.badCertificateCallback =
+        (X509Certificate cert, String host, int port) => true;
+    return client;
+  };
+
+  _dio.interceptors.clear();
+
+  _dio.interceptors.add(LogInterceptor(
+      requestBody: true,
+      error: true,
+      request: true,
+      requestHeader: true,
+      responseBody: true,
+      responseHeader: true));
+
+  _dio.interceptors.add(InterceptorsWrapper(onError: (DioError error, handler) {
+    return handler.next(error);
+  }, onRequest: (RequestOptions requestOptions, handler) async {
+    return handler.next(requestOptions);
+  }, onResponse: (response, handler) async {
+    return handler.next(response);
+  }));
+
+  serviceLocator.registerLazySingleton(() => _dio);
+
   // Api Service
   serviceLocator.registerLazySingleton<ApiService>(
       () => ApiService(networkClient: serviceLocator()));
 
   // Network Client
-  serviceLocator.registerLazySingleton<NetworkClient>(() => NetworkClient());
+  serviceLocator.registerLazySingleton<NetworkClient>(() => NetworkClient(
+      sharedPreferences: serviceLocator(), dio: serviceLocator()));
 
   // Local Cache/ Shared Preferences
   final sharedPreferences = await SharedPreferences.getInstance();
