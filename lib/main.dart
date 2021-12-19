@@ -8,6 +8,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_app/src/core/app.dart';
 import 'package:flutter_app/src/core/di/injection_container.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get/get.dart';
+
+import 'env/setup_config.dart';
 
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -87,6 +90,9 @@ Future<dynamic> _onSelectNotification(String payloadNotification) {
   return null;
 }
 
+const platformMethodChannel = MethodChannel('flutter.appmethodchannel.pk');
+final SetupConfig setupConfig = SetupConfig();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -96,6 +102,13 @@ void main() async {
   // allow only portrait mode.
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) async {
+    platformMethodChannel
+        .invokeMethod<String>('getAppFlavor')
+        .then((String flavor) {
+      if (flavor == 'dev') {
+        setupConfig.startDev();
+      }
+    });
     await initDI();
 
     // For handling notification when the app is in terminated state
@@ -123,10 +136,10 @@ void main() async {
     var initializationSettingsAndroid =
         AndroidInitializationSettings('launch_background');
     var initializationSettingsIOs = IOSInitializationSettings();
-    var initSetttings = InitializationSettings(
+    var initSettings = InitializationSettings(
         android: initializationSettingsAndroid, iOS: initializationSettingsIOs);
 
-    flutterLocalNotificationsPlugin.initialize(initSetttings,
+    flutterLocalNotificationsPlugin.initialize(initSettings,
         onSelectNotification: _onSelectNotification);
 
     _initNotificationChannel();
@@ -185,7 +198,7 @@ void main() async {
     }
 
     runZonedGuarded(() {
-      runApp(MaterialApp(
+      runApp(GetMaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: initialRoute,
         routes: {'appPage': (context) => App()},

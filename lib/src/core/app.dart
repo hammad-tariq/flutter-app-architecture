@@ -59,8 +59,8 @@ class _AppState extends State<App> {
     );
   }
 
-  // Define an async function to initi
-  // alize FlutterFire
+  // Define an async function to
+  // initialize FlutterFire
   Future<void> _initializeFlutterFire() async {
     // Wait for Firebase to initialize
     if (_kTestingCrashlytics) {

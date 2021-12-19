@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/src/core/error/exceptions.dart';
-import 'package:flutter_app/src/core/util/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NetworkClient {
