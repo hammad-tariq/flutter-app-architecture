@@ -12,39 +12,39 @@ dependencies:
     sdk: flutter
 
   # Bloc for state management
-  flutter_bloc: ^4.0.0
+  flutter_bloc: ^8.0.1
   # font awesome library.
-  font_awesome_flutter: ^8.5.0
+  font_awesome_flutter: ^10.1.0
   # Value equality
-  equatable: ^1.2.5
+  equatable: ^2.0.3
   # Service locator
-  get_it: ^5.0.3
+  get_it: ^7.2.0
   # For Navigation and Themes.
-  get:
+  get: ^4.6.5
 
   # Functional programming in Dart.
-  dartz: ^0.9.2
+  dartz: ^0.10.1
 
   # Local cache
-  shared_preferences: ^0.5.12+4
+  shared_preferences: ^2.0.15
 
   # Localization
   flutter_localizations:
     sdk: flutter
   # To add localized text.
-  intl: ^0.16.0
+  intl: ^0.17.0
 
   # Networking
-  data_connection_checker: ^0.3.4
-  dio: ^3.0.10
-  connectivity: ^2.0.2
+#  data_connection_checker: ^0.3.4
+  dio: ^4.0.6
+  connectivity: ^3.0.6
 
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mockito: ^4.1.1
+  mockito: ^5.2.0
 
 # The following section is specific to Flutter.
 flutter:

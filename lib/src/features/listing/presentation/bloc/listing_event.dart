@@ -5,5 +5,5 @@ abstract class ListingEvent {}
 
 
 class SearchCustomer {
-  
+  String searchValue;
 }

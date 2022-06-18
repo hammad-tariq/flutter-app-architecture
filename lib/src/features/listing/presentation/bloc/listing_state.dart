@@ -4,3 +4,8 @@ import 'package:flutter/material.dart';
 abstract class ListingState {}
 
 class ListingInitial extends ListingState {}
+
+
+class SearchComplete extends ListingState{
+  
+}
