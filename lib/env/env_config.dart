@@ -1,3 +1,0 @@
-enum EnvType {
-  DEVELOPMENT, STAGING, PRODUCTION
-}

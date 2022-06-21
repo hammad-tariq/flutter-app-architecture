@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1010263203879",
+    "project_id": "developine-66453",
+    "storage_bucket": "developine-66453.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010263203879:android:730eb76ca616835edf2e02",
+        "android_client_info": {
+          "package_name": "com.developine.developine_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010263203879-le7f29t61orve80bv1qqsa2bs9o6qae7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpYR1cDMYi7j7_px6famqqMA90lclUdnU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010263203879-le7f29t61orve80bv1qqsa2bs9o6qae7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
