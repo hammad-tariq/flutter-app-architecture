@@ -10,15 +10,15 @@ abstract class LoginRemoteDataSource {
 }
 
 class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
-  final NetworkClient apiService;
+  final NetworkClient networkClient;
 
-  LoginRemoteDataSourceImpl({required this.apiService});
+  LoginRemoteDataSourceImpl({required this.networkClient});
 
   @override
   Future<LoginResponseModel> makeLoginRequest(LoginRequest loginRequest) async {
     Map<String, String>? params;
     LoginResponseModel loginResponseModel;
-    Response response = await apiService.invoke(kloginAPI, RequestType.post,
+    Response response = await networkClient.invoke(kloginAPI, RequestType.post,
         queryParameters: params, requestBody: loginRequest);
     if (response.statusCode == 200 || response.statusCode == 201) {
       return LoginResponseModel.fromJson(response.data);

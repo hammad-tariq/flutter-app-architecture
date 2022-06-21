@@ -69,6 +69,7 @@ Future<void> initDI() async {
 
   // Local Cache/ Shared Preferences
   final sharedPreferences = await SharedPreferences.getInstance();
+
   serviceLocator
       .registerLazySingleton<SharedPreferences>(() => sharedPreferences);
 
@@ -76,7 +77,7 @@ Future<void> initDI() async {
 
   // DATA SOURCES
   serviceLocator.registerLazySingleton<LoginRemoteDataSource>(
-      () => LoginRemoteDataSourceImpl(apiService: serviceLocator()));
+      () => LoginRemoteDataSourceImpl(networkClient: serviceLocator()));
 
   serviceLocator.registerLazySingleton<LoginLocalDataSource>(
       () => LoginLocalDataSourceImpl(sharedPreferences: serviceLocator()));

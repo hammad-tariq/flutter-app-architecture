@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../../../../core/bloc/base_cubit.dart';
 import '../../data/repositories/login_repository_impl.dart';

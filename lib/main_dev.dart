@@ -19,8 +19,8 @@ void main() async {
   runZonedGuarded(() async {
     await BlocOverrides.runZoned(
       () async {
-        initDI();
         WidgetsFlutterBinding.ensureInitialized();
+        initDI();
         await initFirebaseApp();
         FlutterError.onError = (FlutterErrorDetails details) {
           FlutterError.presentError(details);

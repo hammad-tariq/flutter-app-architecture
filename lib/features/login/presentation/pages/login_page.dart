@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import '../../../../core/util/theme_controller.dart';
+import '../../../../core/di/injection_container.dart';
 import '../../data/repositories/login_repository_impl.dart';
+import '../../domain/repositories/login_repository.dart';
 import '../cubit/login_cubit.dart';
 
 class LoginPage extends StatefulWidget {
@@ -25,14 +25,13 @@ class _LoginPageState extends State<LoginPage> {
   late String _displayName;
 
   bool _obscure = false;
-  var themeController = GetIt.I<ThemeController>();
   late ThemeMode _themeMode;
-  LoginCubit loginCubit =
-      LoginCubit(loginRepository: GetIt.I<LoginRepositoryImpl>());
+
+  var loginCubit =
+      LoginCubit(loginRepository: serviceLocator<LoginRepositoryImpl>());
 
   @override
   Widget build(BuildContext context) {
-    _themeMode = themeController.themeMode;
     return Scaffold(
         resizeToAvoidBottomInset: false,
         key: _scaffoldKey,
