@@ -11,7 +11,10 @@ import 'config/flavors.dart';
 
 void main() async {
   F.appFlavor = Flavor.dev;
-  GlobalAppConfig(appName: "", flavorName: F.appFlavor.toString(), apiBaseURL:  "http://restapi.adequateshop.com/api/authaccount");
+  GlobalAppConfig(
+      appName: "",
+      flavorName: F.appFlavor.toString(),
+      apiBaseURL: "http://restapi.adequateshop.com/api/authaccount");
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
@@ -26,6 +29,7 @@ void main() async {
           FlutterError.presentError(details);
         };
         runApp(
+          // testing repo link.
           const AppParentWidget(),
         );
       },
