@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'app_parent_widget.dart';
 import 'core/bloc/bloc_observer.dart';
 import 'core/di/injection_container.dart';
-import 'core/firebase/firebase_handler.dart';
 import 'config/flavors.dart';
+import 'core/firebase/firebase_notification_handler.dart';
 
 void main() async {
   F.appFlavor = Flavor.prod;
@@ -29,5 +29,7 @@ void main() async {
       },
       blocObserver: CubitObserver(),
     );
-  }, (error, stackTrace) {});
+  }, (error, stackTrace) {
+
+  });
 }

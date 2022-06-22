@@ -1,3 +1,5 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -18,6 +20,9 @@ class AppParentWidget extends StatefulWidget {
 class _AppParentWidgetState extends State<AppParentWidget> {
   // Adding English and Arabic support.
   var supportedLocales = [const Locale('en', ''), const Locale('ar', '')];
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: analytics);
 
   @override
   void initState() {
@@ -36,6 +41,7 @@ class _AppParentWidgetState extends State<AppParentWidget> {
       supportedLocales: supportedLocales,
       title: 'DEVELOPINE',
       navigatorKey: RouteNavigator.navigatorKey,
+      navigatorObservers: [observer],
       onGenerateRoute: RouteNavigator.generateNamedRoute,
       routes: RouteNavigator.routesList,
       // TODO: implement Route navigation.
