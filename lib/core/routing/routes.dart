@@ -6,6 +6,8 @@ class RouteNavigator {
   static final GlobalKey<NavigatorState> navigatorKey =
       GlobalKey<NavigatorState>();
 
+  NavigatorState get _navigator => navigatorKey.currentState!;
+
   static final routesList = {
     RoutesList.loginRoute: (context) => LoginPage(),
   };

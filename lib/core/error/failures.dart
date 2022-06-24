@@ -16,3 +16,12 @@ class ServerFailure extends Failure {
 class CacheFailure extends Failure {
   const CacheFailure(message) : super(message);
 }
+
+enum LocationFailureReason { denied, disabled, unknown }
+
+class LocationFailure extends Failure {
+  const LocationFailure(message, LocationFailureReason)
+      : super(
+          message,
+        );
+}

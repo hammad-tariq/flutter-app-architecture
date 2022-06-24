@@ -7,6 +7,7 @@ import '../../config/env_config.dart';
 import '../../features/login/data/data_sources/login_local_datasource.dart';
 import '../../features/login/data/data_sources/login_remote_datasource.dart';
 import '../../features/login/data/repositories/login_repository_impl.dart';
+import '../../features/login/domain/repositories/login_repository.dart';
 import '../../features/login/presentation/cubit/login_cubit.dart';
 import '../db/app_database.dart';
 import '../logger/firebase_logger.dart';
@@ -83,17 +84,19 @@ Future<void> initDI() async {
       () => LoginLocalDataSourceImpl(sharedPreferences: serviceLocator()));
 
   // REPOSITORIES
-  serviceLocator.registerLazySingleton<LoginRepositoryImpl>(() =>
-      LoginRepositoryImpl(
-          networkInfoImpl: serviceLocator(),
-          loginLocalDataSourceImpl: serviceLocator(),
-          loginRemoteDataSourceImpl: serviceLocator()));
+  serviceLocator.registerLazySingleton<LoginRepository>(() => LoginRepositoryImpl(
+      networkInfoImpl: serviceLocator(),
+      loginLocalDataSourceImpl: serviceLocator(),
+      loginRemoteDataSourceImpl: serviceLocator()));
+
+
+  // BLOC
+  serviceLocator.registerFactory(
+          () => LoginCubit(loginRepository: serviceLocator()));
+
 
   // USE CASES
 
-  // BLOC
-  serviceLocator.registerFactory<LoginCubit>(
-      () => LoginCubit(loginRepository: serviceLocator()));
   // DATA SOURCES
 
   // REPOSITORIES

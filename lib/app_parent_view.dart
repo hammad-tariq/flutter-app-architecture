@@ -1,23 +1,28 @@
+import 'dart:developer';
+
+import 'package:developine_app/core/bloc/network_cubit.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'core/bloc/network_state.dart';
 import 'core/const/route_constants.dart';
 import 'core/routing/routes.dart';
 import 'core/util/constant.dart';
 import 'core/util/theme.dart';
 
-class AppParentWidget extends StatefulWidget {
-  const AppParentWidget({Key? key}) : super(key: key);
+class AppParentView extends StatefulWidget {
+  const AppParentView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _AppParentWidgetState();
+    return _AppParentViewState();
   }
 }
 
-class _AppParentWidgetState extends State<AppParentWidget> {
+class _AppParentViewState extends State<AppParentView> {
   // Adding English and Arabic support.
   var supportedLocales = [const Locale('en', ''), const Locale('ar', '')];
   static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
@@ -32,23 +37,30 @@ class _AppParentWidgetState extends State<AppParentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: supportedLocales,
-      title: 'DEVELOPINE',
-      navigatorKey: RouteNavigator.navigatorKey,
-      navigatorObservers: [observer],
-      onGenerateRoute: RouteNavigator.generateNamedRoute,
-      routes: RouteNavigator.routesList,
-      // TODO: implement Route navigation.
-      onGenerateInitialRoutes: RouteNavigator.defaultGenerateInitialRoutes,
-      theme: lightTheme,
-      initialRoute: RoutesList.initialRoute,
-      debugShowCheckedModeBanner: false,
+    return BlocConsumer<NetworkCubit, NetworkState>(
+      listener: (context, state) {
+        log("App parent widget BlocConsumer: " + state.runtimeType.toString());
+      },
+      builder: (BuildContext context, state) {
+        return MaterialApp(
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: supportedLocales,
+          title: 'DEVELOPINE',
+          navigatorKey: RouteNavigator.navigatorKey,
+          navigatorObservers: [observer],
+          onGenerateRoute: RouteNavigator.generateNamedRoute,
+          routes: RouteNavigator.routesList,
+          // TODO: implement Route navigation.
+          onGenerateInitialRoutes: RouteNavigator.defaultGenerateInitialRoutes,
+          theme: lightTheme,
+          initialRoute: RoutesList.initialRoute,
+          debugShowCheckedModeBanner: false,
+        );
+      },
     );
   }
 

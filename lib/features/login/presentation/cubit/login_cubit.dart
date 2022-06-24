@@ -6,7 +6,7 @@ import '../../domain/repositories/login_repository.dart';
 part 'login_state.dart';
 
 class LoginCubit extends BaseCubit<LoginState> {
-  final LoginRepositoryImpl loginRepository;
+  final LoginRepository loginRepository;
 
   LoginCubit({required this.loginRepository}) : super(LoginInitialState());
 

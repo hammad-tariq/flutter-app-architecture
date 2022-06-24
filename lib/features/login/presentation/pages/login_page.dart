@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/injection_container.dart';
-import '../../data/repositories/login_repository_impl.dart';
-import '../../domain/repositories/login_repository.dart';
 import '../cubit/login_cubit.dart';
 
 class LoginPage extends StatefulWidget {
@@ -27,8 +26,10 @@ class _LoginPageState extends State<LoginPage> {
   bool _obscure = false;
   late ThemeMode _themeMode;
 
-  var loginCubit =
-      LoginCubit(loginRepository: serviceLocator<LoginRepositoryImpl>());
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +37,13 @@ class _LoginPageState extends State<LoginPage> {
         resizeToAvoidBottomInset: false,
         key: _scaffoldKey,
         backgroundColor: Theme.of(context).primaryColor,
-        body: Center(
-          child: MaterialButton(
-            onPressed: () {
-              loginCubit.authenticateUserApi();
-            },
-            child: Text('LOGIN'),
+        body: BlocProvider(
+          create: (_) => serviceLocator<LoginCubit>(),
+          child: Center(
+            child: MaterialButton(
+              onPressed: () {},
+              child: Text('Button'),
+            ),
           ),
         ));
   }

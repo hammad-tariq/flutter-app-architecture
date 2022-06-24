@@ -7,9 +7,9 @@ import '../data_sources/login_remote_datasource.dart';
 import '../models/login_response_model.dart';
 
 class LoginRepositoryImpl implements LoginRepository {
-  final LoginRemoteDataSourceImpl loginRemoteDataSourceImpl;
-  final NetworkInfoImpl networkInfoImpl;
-  final LoginLocalDataSourceImpl loginLocalDataSourceImpl;
+  final LoginRemoteDataSource loginRemoteDataSourceImpl;
+  final NetworkInfo networkInfoImpl;
+  final LoginLocalDataSource loginLocalDataSourceImpl;
 
   LoginRepositoryImpl(
       {required this.loginLocalDataSourceImpl,
