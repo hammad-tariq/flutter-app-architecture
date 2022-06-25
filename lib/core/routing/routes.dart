@@ -1,6 +1,11 @@
+import 'package:developine_app/core/bloc/network_cubit.dart';
+import 'package:developine_app/features/login/presentation/cubit/login_cubit.dart';
+import 'package:developine_app/features/splash/splash_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/login/presentation/pages/login_page.dart';
 import '../const/route_constants.dart';
+import '../di/injection_container.dart';
 
 class RouteNavigator {
   static final GlobalKey<NavigatorState> navigatorKey =
@@ -9,6 +14,7 @@ class RouteNavigator {
   NavigatorState get _navigator => navigatorKey.currentState!;
 
   static final routesList = {
+    RoutesList.initialRoute: (context) => SplashPage(),
     RoutesList.loginRoute: (context) => LoginPage(),
   };
 
@@ -31,7 +37,8 @@ class RouteNavigator {
   static List<Route<dynamic>> defaultGenerateInitialRoutes(
       String initialRouteName) {
     List<MaterialPageRoute> routes = [];
-    routes.add(MaterialPageRoute(builder: routesList[RoutesList.loginRoute]!));
+    routes
+        .add(MaterialPageRoute(builder: routesList[RoutesList.initialRoute]!));
     return routes;
   }
 
@@ -39,11 +46,21 @@ class RouteNavigator {
     switch (settings.name) {
       case RoutesList.initialRoute:
         {
-          return MaterialPageRoute(builder: (context) => LoginPage());
+          return MaterialPageRoute(
+            builder: (_) => MultiBlocProvider(providers: [
+              BlocProvider<NetworkCubit>(
+                  create: (_) => serviceLocator<NetworkCubit>()),
+            ], child: SplashPage()),
+          );
         }
       case RoutesList.loginRoute:
         {
-          return MaterialPageRoute(builder: (context) => LoginPage());
+          return MaterialPageRoute(
+            builder: (_) => MultiBlocProvider(providers: [
+              BlocProvider<LoginCubit>(
+                  create: (_) => serviceLocator<LoginCubit>()),
+            ], child: LoginPage()),
+          );
         }
       default:
         throw Exception('This route name does not exit');

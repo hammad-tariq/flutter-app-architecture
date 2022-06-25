@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(color: Colors.white),
                 ),
               );
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              // ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },
           ),
         ],

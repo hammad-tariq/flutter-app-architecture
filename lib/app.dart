@@ -8,13 +8,16 @@ import 'features/login/presentation/cubit/login_cubit.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: [
-      BlocProvider(
-        create: (_) => serviceLocator<LoginCubit>(),
-      ),
-      BlocProvider(
-        create: (_) => serviceLocator<NetworkCubit>(),
-      ),
-    ], child: AppParentView());
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => serviceLocator<LoginCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => serviceLocator<NetworkCubit>(),
+        ),
+      ],
+      child: AppParentView(),
+    );
   }
 }
