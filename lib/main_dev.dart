@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'app.dart';
-import 'app_parent_view.dart';
 import 'config/env_config.dart';
 import 'core/bloc/bloc_observer.dart';
 import 'core/di/injection_container.dart';
@@ -36,5 +35,8 @@ void main() async {
       },
       blocObserver: CubitObserver(),
     );
-  }, (error, stackTrace) {});
+  }, (error, stackTrace) {
+    log("main_dev runZonedGuarded Error: $error");
+    log("main_dev runZonedGuarded StackTrace: $stackTrace");
+  });
 }

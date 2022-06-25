@@ -1,6 +1,7 @@
+import 'package:developine_app/core/bloc/network_cubit.dart';
+import 'package:developine_app/core/bloc/network_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/di/injection_container.dart';
 import '../cubit/login_cubit.dart';
 
 class LoginPage extends StatefulWidget {
@@ -34,18 +35,31 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        key: _scaffoldKey,
-        backgroundColor: Theme.of(context).primaryColor,
-        body: BlocProvider(
-          create: (_) => serviceLocator<LoginCubit>(),
-          child: Center(
-            child: MaterialButton(
-              onPressed: () {},
-              child: Text('Button'),
-            ),
+      resizeToAvoidBottomInset: false,
+      key: _scaffoldKey,
+      backgroundColor: Theme.of(context).primaryColor,
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<NetworkCubit, NetworkState>(
+            listener: (context, state) {
+              var snackBar = SnackBar(
+                content: Text(
+                  state.message,
+                  style: TextStyle(color: Colors.white),
+                ),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            },
           ),
-        ));
+        ],
+        child: BlocConsumer<LoginCubit, LoginState>(
+          listener: (oldState, newState) {},
+          builder: (BuildContext context, state) {
+            return Center();
+          },
+        ),
+      ),
+    );
   }
 
   void _loginUser() {

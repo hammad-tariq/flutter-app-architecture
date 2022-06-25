@@ -14,13 +14,14 @@ class LoginCubit extends BaseCubit<LoginState> {
     emit(LoginInProgressState());
     LoginRequest loginRequest =
         LoginRequest(email: "test@email.com", password: "test12345");
-    var loginResponse = await loginRepository.makeLoginRequest(loginRequest);
-
-    loginResponse.fold((left) {
-      // Failure
-      emit(LoginFailureState(message: handleException(left)));
-    }, (right) {
-      // Success.
-    });
+    // var loginResponse = await loginRepository.makeLoginRequest(loginRequest);
+    //
+    // loginResponse.fold((left) {
+    //   // Failure
+    //   emit(LoginFailureState(message: handleException(left)));
+    // }, (right) {
+    //   // Success.
+    // });
+    //
   }
 }

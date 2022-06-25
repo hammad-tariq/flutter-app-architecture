@@ -1,8 +1,10 @@
 import 'dart:io';
+import 'package:developine_app/core/bloc/network_cubit.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:simple_connection_checker/simple_connection_checker.dart';
 import '../../config/env_config.dart';
 import '../../features/login/data/data_sources/login_local_datasource.dart';
 import '../../features/login/data/data_sources/login_remote_datasource.dart';
@@ -70,9 +72,14 @@ Future<void> initDI() async {
 
   // Local Cache/ Shared Preferences
   final sharedPreferences = await SharedPreferences.getInstance();
+  final connectionChecker = SimpleConnectionChecker()
+    ..setLookUpAddress('pub.dev');
 
   serviceLocator
       .registerLazySingleton<SharedPreferences>(() => sharedPreferences);
+
+  serviceLocator
+      .registerLazySingleton<SimpleConnectionChecker>(() => connectionChecker);
 
   serviceLocator.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl());
 
@@ -84,16 +91,17 @@ Future<void> initDI() async {
       () => LoginLocalDataSourceImpl(sharedPreferences: serviceLocator()));
 
   // REPOSITORIES
-  serviceLocator.registerLazySingleton<LoginRepository>(() => LoginRepositoryImpl(
-      networkInfoImpl: serviceLocator(),
-      loginLocalDataSourceImpl: serviceLocator(),
-      loginRemoteDataSourceImpl: serviceLocator()));
+  serviceLocator.registerLazySingleton<LoginRepository>(() =>
+      LoginRepositoryImpl(
+          networkInfoImpl: serviceLocator(),
+          loginLocalDataSourceImpl: serviceLocator(),
+          loginRemoteDataSourceImpl: serviceLocator()));
 
+  // // BLOC
+  serviceLocator.registerFactory<LoginCubit>(
+      () => LoginCubit(loginRepository: serviceLocator()));
 
-  // BLOC
-  serviceLocator.registerFactory(
-          () => LoginCubit(loginRepository: serviceLocator()));
-
+  serviceLocator.registerFactory(() => NetworkCubit());
 
   // USE CASES
 

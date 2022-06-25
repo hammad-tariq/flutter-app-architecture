@@ -30,5 +30,8 @@ void main() async {
       },
       blocObserver: CubitObserver(),
     );
-  }, (error, stackTrace) {});
+  }, (error, stackTrace) {
+    log("main_prod runZonedGuarded Error: $error");
+    log("main_prod runZonedGuarded StackTrace: $stackTrace");
+  });
 }

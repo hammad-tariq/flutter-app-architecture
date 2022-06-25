@@ -37,30 +37,23 @@ class _AppParentViewState extends State<AppParentView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<NetworkCubit, NetworkState>(
-      listener: (context, state) {
-        log("App parent widget BlocConsumer: " + state.runtimeType.toString());
-      },
-      builder: (BuildContext context, state) {
-        return MaterialApp(
-          localizationsDelegates: const [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: supportedLocales,
-          title: 'DEVELOPINE',
-          navigatorKey: RouteNavigator.navigatorKey,
-          navigatorObservers: [observer],
-          onGenerateRoute: RouteNavigator.generateNamedRoute,
-          routes: RouteNavigator.routesList,
-          // TODO: implement Route navigation.
-          onGenerateInitialRoutes: RouteNavigator.defaultGenerateInitialRoutes,
-          theme: lightTheme,
-          initialRoute: RoutesList.initialRoute,
-          debugShowCheckedModeBanner: false,
-        );
-      },
+    return MaterialApp(
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: supportedLocales,
+      title: 'DEVELOPINE',
+      navigatorKey: RouteNavigator.navigatorKey,
+      navigatorObservers: [observer],
+      onGenerateRoute: RouteNavigator.generateNamedRoute,
+      routes: RouteNavigator.routesList,
+      // TODO: implement Route navigation.
+      onGenerateInitialRoutes: RouteNavigator.defaultGenerateInitialRoutes,
+      theme: lightTheme,
+      initialRoute: RoutesList.initialRoute,
+      debugShowCheckedModeBanner: false,
     );
   }
 
