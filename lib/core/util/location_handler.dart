@@ -9,9 +9,9 @@ class LocationHandler {
 
   Future<Either<Failure, LocationData?>> getCurrentLocation() async {
     Location location = Location();
-    _serviceEnabled = await location.serviceEnabled() ?? false;
+    _serviceEnabled = await location.serviceEnabled();
     if (!_serviceEnabled) {
-      _serviceEnabled = await location.requestService() ?? false;
+      _serviceEnabled = await location.requestService();
       if (!_serviceEnabled) {
         return const Left(LocationFailure("", LocationFailureReason.disabled));
       }

@@ -10,11 +10,10 @@ class SearchField extends StatelessWidget {
         onChanged: (value) {
           // TODO: implement callback.
         },
-        style: titleStyle,
+        style: headline2,
         decoration: InputDecoration(
             labelText: "Search",
             hintText: "Search",
-            fillColor: splashColor,
             prefixIcon: Icon(Icons.search),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(25.0)))),

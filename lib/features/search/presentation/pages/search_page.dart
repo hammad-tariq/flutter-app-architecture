@@ -20,6 +20,15 @@ class SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    throw UnimplementedError();
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Text(
+            'This is search page',
+            style: TextStyle(color: Colors.blue),
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:developine_app/core/bloc/network_cubit.dart';
 import 'package:developine_app/core/bloc/network_state.dart';
 import 'package:developine_app/core/layout/colored_safearea.dart';
+import 'package:developine_app/core/util/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/const/route_constants.dart';
@@ -22,7 +23,7 @@ class SplashPageState extends State<SplashPage> {
     Timer(
         Duration(seconds: 5),
         () => RouteNavigator.pushRepalcementNamed(
-            routeName: RoutesList.loginRoute));
+            routeName: RoutesList.homeRoute));
   }
 
   @override
@@ -33,10 +34,10 @@ class SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return ColoredSafeArea(
-      color: Colors.white,
+      color: backgroundColor,
       showBanner: false,
       child: Scaffold(
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: backgroundColor,
         body: BlocConsumer<NetworkCubit, NetworkState>(
             builder: (BuildContext context, state) {
           return Column(
@@ -46,7 +47,7 @@ class SplashPageState extends State<SplashPage> {
               Expanded(
                 child: Icon(
                   Icons.download_for_offline_outlined,
-                  size: 36,
+                  size: kIconS,
                 ),
               ),
               Align(
@@ -60,9 +61,7 @@ class SplashPageState extends State<SplashPage> {
                 visible: state is NetworkDisConnectedState,
                 child: Text(
                   state.message,
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
+                  style: subTitle2,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -75,7 +74,7 @@ class SplashPageState extends State<SplashPage> {
           var snackBar = SnackBar(
             content: Text(
               state.message,
-              style: TextStyle(color: Colors.white),
+              style: subTitle2,
             ),
           );
           ScaffoldMessenger.of(context).showSnackBar(snackBar);

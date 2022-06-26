@@ -55,11 +55,16 @@ dependencies:
   permission_handler: ^8.3.0
   location: ^4.2.0
 
+  google_fonts: ^3.0.1
+
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   mockito: ^5.2.0
+  flutter_lints: ^2.0.1
+
 
 # The following section is specific to Flutter.
 flutter:
