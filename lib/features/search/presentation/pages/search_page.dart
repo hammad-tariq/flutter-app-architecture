@@ -1,3 +1,4 @@
+import 'package:developine_app/core/util/theme.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatefulWidget {
@@ -25,7 +26,7 @@ class SearchPageState extends State<SearchPage> {
         body: Center(
           child: Text(
             'This is search page',
-            style: TextStyle(color: Colors.blue),
+            style: headline2,
           ),
         ),
       ),

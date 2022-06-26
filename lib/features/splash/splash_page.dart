@@ -47,7 +47,7 @@ class SplashPageState extends State<SplashPage> {
               Expanded(
                 child: Icon(
                   Icons.download_for_offline_outlined,
-                  size: kIconS,
+                  size: kIconL,
                 ),
               ),
               Align(
@@ -55,7 +55,7 @@ class SplashPageState extends State<SplashPage> {
                 child: CircularProgressIndicator(),
               ),
               SizedBox(
-                height: 12,
+                height: kSpaceM,
               ),
               Visibility(
                 visible: state is NetworkDisConnectedState,
@@ -65,16 +65,18 @@ class SplashPageState extends State<SplashPage> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              SizedBox(
-                height: 36,
+              const SizedBox(
+                height: kSpaceL,
               )
             ],
           );
         }, listener: (context, state) {
+          if (state is NetworkInitialState || state is NetworkConnectedState)
+            return;
           var snackBar = SnackBar(
             content: Text(
               state.message,
-              style: subTitle2,
+              style: subTitle2.copyWith(color: onPrimaryColor),
             ),
           );
           ScaffoldMessenger.of(context).showSnackBar(snackBar);

@@ -40,55 +40,89 @@ const Duration kLoginAnimationDuration = Duration(milliseconds: 1500);
 // Text Styling
 
 TextStyle headline2 = GoogleFonts.raleway(
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     fontSize: 60,
+    color: onBackgroundColor,
     fontWeight: FontWeight.normal,
   ),
 );
-const TextStyle headline3 = TextStyle(
-  fontSize: 48,
-  fontWeight: FontWeight.normal,
+TextStyle headline3 = GoogleFonts.raleway(
+  textStyle: const TextStyle(
+    fontSize: 48,
+    color: onBackgroundColor,
+    fontWeight: FontWeight.normal,
+  ),
 );
-const TextStyle headline4 = TextStyle(
-  fontSize: 34,
-  fontWeight: FontWeight.normal,
+TextStyle headline4 = GoogleFonts.raleway(
+  textStyle: const TextStyle(
+    fontSize: 34,
+    color: onBackgroundColor,
+    fontWeight: FontWeight.normal,
+  ),
 );
-const TextStyle headline5 = TextStyle(
-  fontSize: 24,
-  fontWeight: FontWeight.normal,
+TextStyle headline5 = GoogleFonts.raleway(
+  textStyle: const TextStyle(
+    fontSize: 24,
+    color: onBackgroundColor,
+    fontWeight: FontWeight.normal,
+  ),
 );
-const TextStyle headline6 = TextStyle(
-  fontSize: 20,
-  letterSpacing: 0.15,
-  fontWeight: FontWeight.w700,
+TextStyle headline6 = GoogleFonts.raleway(
+  textStyle: const TextStyle(
+    fontSize: 20,
+    letterSpacing: 0.15,
+    color: onBackgroundColor,
+    fontWeight: FontWeight.w700,
+  ),
 );
-const TextStyle body1 = TextStyle(
-  fontSize: 16,
-  fontWeight: FontWeight.normal,
+TextStyle body1 = GoogleFonts.raleway(
+  textStyle: const TextStyle(
+    fontSize: 16,
+    color: onBackgroundColor,
+    fontWeight: FontWeight.normal,
+  ),
 );
-const TextStyle body2 = TextStyle(
-  fontSize: 14,
-  fontWeight: FontWeight.normal,
+TextStyle body2 = GoogleFonts.raleway(
+  textStyle: const TextStyle(
+    fontSize: 14,
+    color: onBackgroundColor,
+    fontWeight: FontWeight.normal,
+  ),
 );
-const TextStyle button = TextStyle(
-  fontSize: 14,
-  fontWeight: FontWeight.w700,
+TextStyle button = GoogleFonts.raleway(
+  textStyle: const TextStyle(
+    fontSize: 14,
+    color: onPrimaryColor,
+    fontWeight: FontWeight.w700,
+  ),
 );
-const TextStyle caption = TextStyle(
-  fontSize: 12,
-  fontWeight: FontWeight.normal,
+TextStyle caption = GoogleFonts.raleway(
+  textStyle: const TextStyle(
+    fontSize: 12,
+    color: onBackgroundColor,
+    fontWeight: FontWeight.normal,
+  ),
 );
-const TextStyle subTitle1 = TextStyle(
-  fontSize: 16,
-  fontWeight: FontWeight.normal,
+TextStyle subTitle1 = GoogleFonts.raleway(
+  textStyle: const TextStyle(
+    fontSize: 16,
+    color: onBackgroundColor,
+    fontWeight: FontWeight.normal,
+  ),
 );
-const TextStyle subTitle2 = TextStyle(
-  fontSize: 14,
-  fontWeight: FontWeight.normal,
+TextStyle subTitle2 = GoogleFonts.raleway(
+  textStyle: const TextStyle(
+    fontSize: 14,
+    color: onBackgroundColor,
+    fontWeight: FontWeight.normal,
+  ),
 );
-const TextStyle overline = TextStyle(
-  fontSize: 14,
-  fontWeight: FontWeight.normal,
+TextStyle overline = GoogleFonts.raleway(
+  textStyle: const TextStyle(
+    fontSize: 14,
+    color: onBackgroundColor,
+    fontWeight: FontWeight.normal,
+  ),
 );
 
 const kTextFieldDecoration = InputDecoration(
@@ -116,7 +150,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     brightness: Brightness.dark,
     errorColor: errorColor,
     backgroundColor: backgroundColor,
-    textTheme: const TextTheme(
+    textTheme: TextTheme(
       subtitle1: subTitle1,
       subtitle2: subTitle2,
       bodyText1: body1,
@@ -128,7 +162,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
       headline4: headline4,
       headline3: headline3,
     ),
-    inputDecorationTheme: InputDecorationTheme(),
+    inputDecorationTheme: const InputDecorationTheme(),
     appBarTheme: const AppBarTheme(
         color: primaryColor,
         actionsIconTheme: IconThemeData(color: Colors.white)),

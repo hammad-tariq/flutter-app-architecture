@@ -20,11 +20,9 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return ColoredSafeArea(
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
+      child:  Scaffold(
           body: Padding(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
                 top: kPaddingS, left: kPaddingS, right: kPaddingS),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,7 +34,7 @@ class HomePageState extends State<HomePage> {
                 ),
                 Text(
                   'We will deliver in 30 minutes',
-                  style: caption,
+                  style: subTitle2,
                 ),
                 SizedBox(
                   height: kSpaceM,
@@ -46,7 +44,6 @@ class HomePageState extends State<HomePage> {
             ),
           ),
         ),
-      ),
       color: Colors.transparent,
       showBanner: false,
     );
