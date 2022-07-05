@@ -1,3 +1,4 @@
+import 'package:developine_app/core/util/theme.dart';
 import 'package:flutter/material.dart';
 import '../../config/flavors.dart';
 
@@ -9,8 +10,8 @@ class ColoredSafeArea extends StatelessWidget {
   const ColoredSafeArea(
       {Key? key,
       required this.child,
-      required this.color,
-      required this.showBanner})
+      this.color = onPrimaryColor,
+      this.showBanner})
       : super(key: key);
 
   @override

@@ -26,6 +26,8 @@ const double kSpaceS = 8.0;
 const double kSpaceM = 12.0;
 const double kSpaceL = 16.0;
 
+const double kRadiusM = 16.0;
+
 // Spacing
 const double kIconS = 24.0;
 const double kIconM = 36.0;
@@ -125,19 +127,27 @@ TextStyle overline = GoogleFonts.raleway(
   ),
 );
 
-const kTextFieldDecoration = InputDecoration(
-  hintText: 'Enter a value',
+InputDecoration kTextFieldDecoration = InputDecoration(
+  hintText: 'Milk, water, bread, oil, tomatto...',
+  fillColor: onPrimaryColor,
+  hintStyle: body2,
+  filled: true,
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+  suffixIcon: Icon(
+    Icons.search,
+    color: primaryColor,
+  ),
+  suffixIconColor: primaryColor,
   border: OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadiusM)),
   ),
   enabledBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.blueAccent, width: 1.0),
-    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+    borderSide: BorderSide(color: Colors.blueAccent, width: 0),
+    borderRadius: BorderRadius.all(Radius.circular(kRadiusM)),
   ),
   focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.blueAccent, width: 2.0),
-    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+    borderSide: BorderSide(color: Colors.blueAccent, width: 0),
+    borderRadius: BorderRadius.all(Radius.circular(kRadiusM)),
   ),
 );
 
